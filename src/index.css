@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-obsidian: #08090B;
+  --color-obsidian-subtle: #101115;
+  --color-accent-blue: #7C9DFF;
+  --color-accent-violet: #A78BFA;
+}
+
+@layer base {
+  :root {
+    --bg-page: #08090B;
+    --bg-surface: #101115;
+    --bg-card: rgba(255, 255, 255, 0.035);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-active: rgba(124, 157, 255, 0.35);
+    --text-primary: #F5F5F7;
+    --text-secondary: #9698A3;
+    --text-muted: #656774;
+    --glass-highlight: rgba(255, 255, 255, 0.06);
+  }
+
+  html.light {
+    --bg-page: #FAFAFC;
+    --bg-surface: #F0F1F5;
+    --bg-card: rgba(255, 255, 255, 0.85);
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-active: rgba(37, 99, 235, 0.35);
+    --text-primary: #121316;
+    --text-secondary: #525462;
+    --text-muted: #848796;
+    --glass-highlight: rgba(255, 255, 255, 0.7);
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    transition: background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+/* Glass utility */
+.liquid-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.liquid-glass-interactive {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-interactive:hover {
+  border-color: var(--border-active);
+  background: rgba(255, 255, 255, 0.055);
+}
+
+html.light .liquid-glass-interactive:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(150, 152, 163, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(150, 152, 163, 0.45);
+}
+
+/* Ambient noise pattern */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+html.light .bg-noise {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 0);
+}
